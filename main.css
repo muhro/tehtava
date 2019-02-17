@@ -1,0 +1,95 @@
+body{
+    height: 100vh;
+    background-color: white;
+}
+*{
+    font-family: "Yu Gothic Medium";
+}
+
+h2{
+    font-size: 1rem;
+    color: black;
+}
+.banner{
+    background-color: #49911d;
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+}
+.depart{
+    text-align: center;
+
+ }
+
+.site{
+    top: 15rem;
+    position: absolute;
+    text-align: center;
+    width: 100vw;
+}
+.taulukko{
+    max-width: 835px;
+    margin: auto;
+}
+#haku{
+    resize: none;
+}
+
+.search {
+}
+
+a{
+color: black;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+* {
+    box-sizing: border-box;
+}
+.cancelled{
+    color: red;
+    font-size: 0.9rem;
+}
+
+#otsikko{
+    color: white;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    border: black;
+    width: 13rem;
+
+}
+.columno {
+    float: left;
+    padding: 10px;
+    border: black;
+    width: 13rem;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
