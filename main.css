@@ -20,11 +20,10 @@ h2{
     z-index: 2;
     border: 1px solid;
     padding: 10px;
-    box-shadow: 5px 10px #888888;
+    box-shadow: 5px 10px rgba(136, 136, 136, 0.35);
 }
 .depart{
     text-align: center;
-
  }
 
 .site{
@@ -39,9 +38,6 @@ h2{
 }
 #haku{
     resize: none;
-}
-
-.search {
 }
 
 a{

@@ -1,6 +1,11 @@
 function etsi () {
-  let day
-  const haku = document.getElementById('haku').value
+
+
+
+  let haku = document.getElementById('haku').value
+  if(haku === ''){
+    location.reload();
+  }
 
   //hakee apista saapuvat ja lähtevät juant 15 aikavälillä, käyttää inputtia hyödyksi
 
@@ -37,55 +42,64 @@ function etsi () {
     for (let i = 0; i < trains.length; i++) {
       for (let j = 0; j < trains[i].timeTableRows.length; j++){
 
-       if (trains[i].timeTableRows[j].stationShortCode.includes(haku)){
-         console.log(j);
+        if (trains[i].timeTableRows[j].stationShortCode.includes(haku)){
 
 
 
-      let trainCategory = trains[i].trainCategory; // commuter vai Longdistance
-      let commuterLineID = trains[i].commuterLineID; // commuter junan tunniste
-      let timeTableRows = trains[i].timeTableRows[j].type; // tuleva / menevä
-      let stationShortCode = trains[i].timeTableRows.slice(-1)[0].stationShortCode; // Päätepysäkki
-      let trainNumber = trains[i].trainNumber; // junan numero
-     //tarkkan sijainnin saapumisaika
-      let scheduledTime = trains[i].timeTableRows[j].scheduledTime.slice(11,16); // saapumisaika
-      let cancel = trains[i].timeTableRows[i].cancelled;
+
+          let trainCategory = trains[i].trainCategory; // commuter vai Longdistance
+          let commuterLineID = trains[i].commuterLineID; // commuter junan tunniste
+          let timeTableRows = trains[i].timeTableRows[j].type; // tuleva / menevä
+          let stationShortCode = trains[i].timeTableRows.slice(-1)[0].stationShortCode; // Päätepysäkki
+          let trainNumber = trains[i].trainNumber; // junan numero
+          //tarkkan sijainnin saapumisaika
+          let scheduledTime = trains[i].timeTableRows[j].scheduledTime.slice(11,16); // saapumisaika
+          let cancel = trains[i].timeTableRows[i].cancelled;
 
 
-      if(cancel === true) {
-        schedulwwedTime = '<p class="cancelled">CANCELLED</p>';
-      }
+          if(cancel === true) {
+            schedulwwedTime = '<p class="cancelled">CANCELLED</p>';
+          }
 
-      if(trainCategory  === 'Long-distance'){
-         trainCategory = 'IC ' + trainNumber;
-      }
+          if(trainCategory  === 'Long-distance'){
+            trainCategory = 'IC ' + trainNumber;
+          }
 
 
 
-      // tulostaa aina yhden rivin missä on infot: Junan tyyppi , saapuva vai lähtevä, päätepysäkki
-      number.innerHTML += (' <div class="row" style="">\n' +
-            '\n' +
-            '        <div class="column app"  + style="background-color:#fffbfd;">\n' +
-            '          <h2>' + trainCategory +' '+ commuterLineID + '</h2>\n' +
-            '         </div>\n' +
-            '\n' +
-            '        <div class="column depart" + style="background-color:rgba(105,126,144,0.33);">\n' +
-            '          <h2>' + timeTableRows + '</h2>\n' +
-            '         </div>\n' +
-            '\n' +
-            '       <div class="column depart" + style="background-color:#fffbfd;">\n' +
-            '          <h2>' + stationShortCode + '</h2>\n' +
-            '         </div>\n' +
-            '\n' +
-            '       <div class="column depart" + style="background-color:rgba(105,126,144,0.33);">\n' +
-            '          <h2>' + scheduledTime + '</h2>\n' +
-            '         </div>\n' +
-            '      </div>');
+          // tulostaa aina yhden rivin missä on infot: Junan tyyppi , saapuva vai lähtevä, päätepysäkki
+          number.innerHTML += (' <div class="row" style="">\n' +
+              '\n' +
+              '        <div class="column app"  + style="background-color:#fffbfd;">\n' +
+              '          <h2>' + trainCategory +' '+ commuterLineID + '</h2>\n' +
+              '         </div>\n' +
+              '\n' +
+              '        <div class="column depart" + style="background-color:rgba(105,126,144,0.33);">\n' +
+              '          <h2>' + timeTableRows + '</h2>\n' +
+              '         </div>\n' +
+              '\n' +
+              '       <div class="column depart" + style="background-color:#fffbfd;">\n' +
+              '          <h2>' + stationShortCode + '</h2>\n' +
+              '         </div>\n' +
+              '\n' +
+              '       <div class="column depart" + style="background-color:rgba(105,126,144,0.33);">\n' +
+              '          <h2>' + scheduledTime + '</h2>\n' +
+              '         </div>\n' +
+              '      </div>');
 
-    }}}
+        }}}
   })
 }
 
 
 const nappi = document.getElementById('nappi');
-nappi.addEventListener('click', etsi);
+let maara = 0;
+nappi.addEventListener('click', () => {
+
+  if(maara === 0){
+    etsi();
+    maara++;
+  }else{
+    location.reload();
+  }
+});
